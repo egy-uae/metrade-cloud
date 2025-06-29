@@ -1,11 +1,14 @@
 <!DOCTYPE html>
+<!-- The 'lang' and 'dir' attributes will be managed by JavaScript -->
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title will also be translated by JS -->
     <title data-en="MEtrade.cloud - Where Global Trade Meets Cloud Simplicity" data-ar="MEtrade.cloud - حيث تلتقي التجارة العالمية بالبساطة السحابية">
         MEtrade.cloud - Where Global Trade Meets Cloud Simplicity
     </title>
+    <!-- CSS Links -->
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
@@ -15,7 +18,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="img/logo.png" alt="MEtrade.cloud Logo">
+                <img src="img/logo.png" alt="MEtrade.cloud Logo" data-en-alt="MEtrade.cloud Logo" data-ar-alt="شعار MEtrade.cloud">
             </div>
             <nav>
                 <ul class="nav-links">
@@ -27,6 +30,7 @@
                     <li><a href="#contact" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
                 </ul>
                 <div class="lang-switch">
+                    <!-- The button text and data-lang will be updated by JS -->
                     <button id="lang-toggle-btn" data-lang="en">العربية</button>
                 </div>
             </nav>
@@ -39,11 +43,11 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section id="home" class="hero-banner">
             <video autoplay loop muted playsinline class="hero-video">
                 <source src="video/hero-video.mp4" type="video/mp4">
-                <source src="video/hero-video.webm" type="video/webm">
-                <img src="img/hero-banner-fallback.jpg" alt="Background image for hero section">
+                Your browser does not support the video tag.
             </video>
             <div class="container">
                 <h1 data-en="MEtrade.cloud" data-ar="MEtrade.cloud">MEtrade.cloud</h1>
@@ -54,13 +58,15 @@
             </div>
         </section>
 
+        <!-- Intro Section -->
         <section id="intro" class="section-padding">
             <div class="container content-center">
                 <h2 data-en="Simplify Your Global Trade Operations" data-ar="بسّط عمليات تجارتك العالمية">Simplify Your Global Trade Operations</h2>
                 <p data-en="MEtrade.cloud is a smart, cloud-based trade platform developed by Al Massriya Al Emaratiya. It empowers importers, exporters, and agents to manage their global trade operations digitally—with speed, security, and precision." data-ar="MEtrade.cloud هي منصة تجارية ذكية قائمة على السحابة، تم تطويرها بواسطة المصرية الإماراتية. تمكّن المستوردين والمصدرين والوكلاء من إدارة عمليات تجارتهم العالمية رقمياً—بسرعة، أمان، ودقة.">
-                    MEtrade.cloud is a smart, cloud-based trade platform developed by Al Massriya Al Emaratiya. It empowers importers, exporters, and agents to manage their global trade operations digitally—with speed, security, and precision.
+                    MEtrade.cloud is a smart, cloud-based trade platform...
                 </p>
                 <div class="features-grid">
+                    <!-- Feature Items will be translated via JS -->
                     <div class="feature-item">
                         <i class="fas fa-globe-americas"></i>
                         <h3 data-en="Global Outlook" data-ar="رؤية عالمية">Global Outlook</h3>
@@ -76,44 +82,25 @@
                         <h3 data-en="Cloud Platform" data-ar="منصة سحابية">Cloud Platform</h3>
                         <p data-en="Integrated digital management via cloud." data-ar="إدارة رقمية متكاملة عبر منصة سحابية.">Integrated digital management via cloud.</p>
                     </div>
-                    <div class="feature-item">
-                        <i class="fas fa-exchange-alt"></i>
-                        <h3 data-en="Seamless Exchange" data-ar="تبادل سلس">Seamless Exchange</h3>
-                        <p data-en="Easy import/export movement." data-ar="سهولة في حركة التجارة والاستيراد والتصدير.">Easy import/export movement.</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-cogs"></i>
-                        <h3 data-en="Operational Efficiency" data-ar="كفاءة تشغيلية">Operational Efficiency</h3>
-                        <p data-en="Reduce effort and costs with technology." data-ar="تقليل الجهد والتكاليف بالتكنولوجيا.">Reduce effort and costs with technology.</p>
-                    </div>
                 </div>
                 <div class="dashboard-preview">
-                    <img src="img/dashboard-mockup.png" data-en-alt="MEtrade.cloud Dashboard Preview" data-ar-alt="معاينة لوحة تحكم MEtrade.cloud" alt="MEtrade.cloud Dashboard Preview">
+                    <img src="img/dashboard-mockup.png" alt="MEtrade.cloud Dashboard Preview" data-en-alt="MEtrade.cloud Dashboard Preview" data-ar-alt="معاينة لوحة تحكم MEtrade.cloud">
                 </div>
             </div>
         </section>
 
+        <!-- About Us Section -->
         <section id="about" class="section-padding bg-light">
             <div class="container content-center">
                 <h2 data-en="About Us" data-ar="من نحن">About Us</h2>
-                <h3 data-en="Al Massriya Al Emaratiya for Import, Export & Commercial Agencies" data-ar="المصرية الإماراتية للاستيراد والتصدير والوكالات التجارية">Al Massriya Al Emaratiya for Import, Export & Commercial Agencies</h3>
-                <p data-en="Al Massriya Al Emaratiya is a multinational import, export, and commercial agency company. Headquartered in Egypt, the company operates across various global markets, connecting businesses with international suppliers, manufacturers, and distribution channels." data-ar="المصرية الإماراتية هي شركة عالمية متعددة الجنسيات للاستيراد والتصدير والوكالات التجارية. يقع مقرها الرئيسي في مصر، وتعمل الشركة عبر أسواق عالمية متنوعة، تربط الشركات بالموردين والمصنعين وقنوات التوزيع الدولية.">
-                    Al Massriya Al Emaratiya is a multinational import, export, and commercial agency company. Headquartered in Egypt, the company operates across various global markets, connecting businesses with international suppliers, manufacturers, and distribution channels.
-                </p>
-                <p data-en="With a focus on agility, trust, and digital transformation, the company provides comprehensive trade solutions—from sourcing and shipping to agency representation and market entry strategies. Our aim is to simplify global trade for clients across the Middle East, Africa, Asia, and Europe." data-ar="مع التركيز على المرونة والثقة والتحول الرقمي، توفر الشركة حلولًا تجارية شاملة—من المصادر والشحن إلى تمثيل الوكالات واستراتيجيات دخول السوق. هدفنا هو تبسيط التجارة العالمية للعملاء في جميع أنحاء الشرق الأوسط وأفريقيا وآسيا وأوروبا.">
-                    With a focus on agility, trust, and digital transformation, the company provides comprehensive trade solutions—from sourcing and shipping to agency representation and market entry strategies. Our aim is to simplify global trade for clients across the Middle East, Africa, Asia, and Europe.
-                </p>
-                <h3 data-en="Why MEtrade.cloud?" data-ar="لماذا MEtrade.cloud؟">Why MEtrade.cloud?</h3>
-                <p data-en="MEtrade.cloud was created to combine real-world expertise with cloud-first innovation to drive the future of trade. We aim to empower businesses with digital tools for efficient global operations." data-ar="تم إنشاء MEtrade.cloud لدمج الخبرة الواقعية مع الابتكار القائم على السحابة لدفع مستقبل التجارة. نهدف إلى تمكين الشركات بالأدوات الرقمية لعمليات عالمية فعالة.">
-                    MEtrade.cloud was created to combine real-world expertise with cloud-first innovation to drive the future of trade. We aim to empower businesses with digital tools for efficient global operations.
-                </p>
-                <h3 data-en="Our Vision & Goals" data-ar="رؤيتنا وأهدافنا">Our Vision & Goals</h3>
-                <p data-en="Our vision is to be the leading digital trade platform globally, enabling seamless and secure international commerce for all our clients." data-ar="تتمثل رؤيتنا في أن نكون المنصة التجارية الرقمية الرائدة عالميًا، مما يتيح تجارة دولية سلسة وآمنة لجميع عملائنا.">
-                    Our vision is to be the leading digital trade platform globally, enabling seamless and secure international commerce for all our clients.
+                <h3 data-en="Al Massriya Al Emaratiya for Import, Export & Commercial Agencies" data-ar="المصرية الإماراتية للاستيراد والتصدير والوكالات التجارية">Al Massriya Al Emaratiya...</h3>
+                <p data-en="Al Massriya Al Emaratiya is a multinational import, export, and commercial agency company..." data-ar="المصرية الإماراتية هي شركة عالمية متعددة الجنسيات للاستيراد والتصدير...">
+                    Al Massriya Al Emaratiya is a multinational...
                 </p>
             </div>
         </section>
 
+        <!-- Platform Features Section -->
         <section id="features" class="section-padding">
             <div class="container content-center">
                 <h2 data-en="Platform Features" data-ar="خدمات المنصة">Platform Features</h2>
@@ -121,41 +108,85 @@
                     <div class="feature-card">
                         <i class="fas fa-box"></i>
                         <h3 data-en="Order Management" data-ar="إدارة الطلبات">Order Management</h3>
-                        <p data-en="Manage import and export orders with ease, from placement to delivery." data-ar="إدارة طلبات الاستيراد والتصدير بسهولة، من وضع الطلب حتى التسليم.">Manage import and export orders with ease, from placement to delivery.</p>
+                        <p data-en="Manage import and export orders with ease, from placement to delivery." data-ar="إدارة طلبات الاستيراد والتصدير بسهولة، من وضع الطلب حتى التسليم.">Manage import and export orders...</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-file-invoice"></i>
                         <h3 data-en="Customs & Shipping Documents" data-ar="إدارة المستندات الجمركية والشحن">Customs & Shipping Documents</h3>
-                        <p data-en="Effortlessly handle all necessary customs and shipping documentation." data-ar="تعامل مع جميع وثائق الجمارك والشحن الضرورية بكل سهولة.">Effortlessly handle all necessary customs and shipping documentation.</p>
+                        <p data-en="Effortlessly handle all necessary customs and shipping documentation." data-ar="تعامل مع جميع وثائق الجمارك والشحن الضرورية بكل سهولة.">Effortlessly handle all necessary...</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-users-cog"></i>
                         <h3 data-en="Commercial Representation System" data-ar="نظام تمثيل تجاري">Commercial Representation System</h3>
-                        <p data-en="Streamline agency operations and partner collaborations." data-ar="تبسيط عمليات الوكالات وتعاون الشركاء.">Streamline agency operations and partner collaborations.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-bell"></i>
-                        <h3 data-en="Instant Notifications & Alerts" data-ar="الإشعارات والتنبيهات اللحظية">Instant Notifications & Alerts</h3>
-                        <p data-en="Receive real-time updates and critical alerts on your trade operations." data-ar="تلقي تحديثات في الوقت الفعلي وتنبيهات هامة حول عملياتك التجارية.">Receive real-time updates and critical alerts on your trade operations.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-chart-line"></i>
-                        <h3 data-en="Dashboard & Analytics" data-ar="لوحة تحكم وتحليلات">Dashboard & Analytics</h3>
-                        <p data-en="Gain insights with a comprehensive dashboard and powerful analytics." data-ar="احصل على رؤى مع لوحة تحكم شاملة وتحليلات قوية.">Gain insights with a comprehensive dashboard and powerful analytics.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-link"></i>
-                        <h3 data-en="External System Integration" data-ar="دعم للربط مع أنظمة خارجية">External System Integration</h3>
-                        <p data-en="Connect seamlessly with external systems like Google Sheets and APIs." data-ar="اتصل بسلاسة مع أنظمة خارجية مثل جداول بيانات جوجل وواجهات برمجة التطبيقات.">Connect seamlessly with external systems like Google Sheets and APIs.</p>
+                        <p data-en="Streamline agency operations and partner collaborations." data-ar="تبسيط عمليات الوكالات وتعاون الشركاء.">Streamline agency operations...</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Try Demo Section -->
         <section id="try-demo" class="section-padding bg-light">
             <div class="container content-center">
                 <h2 data-en="Experience MEtrade.cloud" data-ar="جرب منصة MEtrade.cloud">Experience MEtrade.cloud</h2>
                 <p data-en="Ready to revolutionize your trade operations? Get a firsthand look at our powerful platform." data-ar="هل أنت مستعد لإحداث ثورة في عملياتك التجارية؟ ألقِ نظرة مباشرة على منصتنا القوية.">
-                    Ready to revolutionize your trade operations? Get a firsthand look at our powerful platform.
+                    Ready to revolutionize your trade operations?
                 </p>
-                <a href="#" class="btn-primary" onclick="alert('Demo/Trial request form or link will go here!')
+                <a href="#" class="btn-primary" data-en="Request a Free Demo" data-ar="اطلب عرضًا تجريبيًا مجانيًا">Request a Free Demo</a>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section-padding">
+            <div class="container content-center">
+                <h2 data-en="Frequently Asked Questions" data-ar="الأسئلة الشائعة">Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question" data-en-q="Is the platform free?" data-ar-q="هل المنصة مجانية؟">Is the platform free? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer" data-en-a="MEtrade.cloud offers various pricing tiers, including a free trial period for new users. Specific details are available upon request." data-ar-a="تقدم MEtrade.cloud مستويات تسعير متنوعة، بما في ذلك فترة تجريبية مجانية للمستخدمين الجدد. تتوفر التفاصيل المحددة عند الطلب."><p>MEtrade.cloud offers various pricing tiers...</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" data-en-q="Do I need technical expertise?" data-ar-q="هل أحتاج خبرة تقنية؟">Do I need technical expertise? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer" data-en-a="No, MEtrade.cloud is designed to be user-friendly and intuitive, requiring no prior technical expertise." data-ar-a="لا، تم تصميم MEtrade.cloud لتكون سهلة الاستخدام وبديهية، ولا تتطلب أي خبرة تقنية مسبقة."><p>No, MEtrade.cloud is designed...</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" data-en-q="Can I link it to my Google files?" data-ar-q="هل يمكنني ربطها بملفاتي على Google؟">Can I link it to my Google files? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer" data-en-a="Yes, our platform supports integration with external systems, including Google Sheets, for seamless data management." data-ar-a="نعم، تدعم منصتنا التكامل مع الأنظمة الخارجية، بما في ذلك جداول بيانات جوجل، لإدارة البيانات بسلاسة."><p>Yes, our platform supports...</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding bg-dark">
+            <div class="container content-center">
+                <h2 data-en="Contact Us" data-ar="اتصل بنا">Contact Us</h2>
+                <p data-en="Have questions or need assistance? Get in touch!" data-ar="هل لديك أسئلة أو تحتاج إلى مساعدة؟ تواصل معنا!">Have questions or need assistance? Get in touch!</p>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3 data-en="Get in Touch" data-ar="تواصل معنا">Get in Touch</h3>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@metrade.cloud">info@metrade.cloud</a></p>
+                        <p><i class="fas fa-phone-alt"></i> 0020 123 456 7890</p>
+                        <p><i class="fas fa-map-marker-alt" data-en="123 Trade Street, Cairo, Egypt" data-ar="123 شارع التجارة، القاهرة، مصر"></i> 123 Trade Street, Cairo, Egypt</p>
+                        <a href="https://wa.me/201234567890" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> <span data-en="Contact via WhatsApp" data-ar="تواصل عبر واتساب">Contact via WhatsApp</span></a>
+                    </div>
+                    <div class="contact-form">
+                        <h3 data-en="Send us a Message" data-ar="أرسل لنا رسالة">Send us a Message</h3>
+                        <form action="#" method="POST">
+                            <input type="text" name="name" placeholder="Your Name" data-en-placeholder="Your Name" data-ar-placeholder="اسمك" required>
+                            <input type="email" name="email" placeholder="Your Email" data-en-placeholder="Your Email" data-ar-placeholder="بريدك الإلكتروني" required>
+                            <textarea name="message" placeholder="Your Message" data-en-placeholder="Your Message" data-ar-placeholder="رسالتك" rows="5" required></textarea>
+                            <button type="submit" class="btn-primary" data-en="Send Message" data-ar="إرسال الرسالة">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p data-en="© 2025 MEtrade.cloud. Powered by Al Massriya Al Emaratiya. All rights reserved." data-ar="© 2025 MEtrade.cloud. مدعوم بواسطة المصرية الإماراتية. جميع الحقوق محفوظة.">© 2025 MEtrade.cloud. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
