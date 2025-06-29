@@ -14,11 +14,13 @@ body {
     color: var(--text-color);
     background-color: var(--white);
     font-family: 'Poppins', sans-serif; /* Default for LTR */
+    overflow-x: hidden; /* Prevent horizontal scroll on small devices */
 }
 
 /* Font loading for Arabic - Almarai is a good modern choice */
 html[lang="ar"] body {
     font-family: 'Almarai', sans-serif; /* Overrides for RTL */
+    direction: rtl; /* Set RTL direction for Arabic */
 }
 
 /* Global container for consistent padding and centering */
@@ -29,12 +31,26 @@ html[lang="ar"] body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping for general containers */
+}
+
+/* For sections where content needs to be centered as a block */
+.container.content-center {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+.container.content-center h2,
+.container.content-center p {
+    max-width: 800px; /* Constrain text width for readability */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Section Padding */
 .section-padding {
     padding: 80px 0;
-    overflow-x: hidden; /* Prevent horizontal scroll on small devices */
 }
 
 .bg-light {
@@ -136,6 +152,11 @@ header .logo img {
     width: auto; /* Maintain aspect ratio */
 }
 
+nav {
+    display: flex;
+    align-items: center;
+}
+
 nav .nav-links {
     list-style: none;
     margin: 0;
@@ -152,10 +173,11 @@ nav .nav-links a {
     color: var(--dark-grey);
     font-weight: 600;
     padding: 5px 0; /* Add padding for click area */
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 .lang-switch button {
-    margin-left: 20px;
+    margin-left: 20px; /* Space from last nav item for LTR */
     background: none;
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
@@ -164,6 +186,12 @@ nav .nav-links a {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+html[dir="rtl"] .lang-switch button {
+    margin-left: 0; /* Reset for RTL */
+    margin-right: 20px; /* Space from last nav item for RTL */
 }
 
 .lang-switch button:hover {
@@ -180,12 +208,12 @@ nav .nav-links a {
     height: 20px;
     justify-content: space-between;
     z-index: 1001; /* Ensure it's above nav on mobile */
-    margin-right: 20px; /* Space from right edge for LTR */
+    margin-left: 20px; /* Space from lang switch/logo for LTR */
 }
 
 html[dir="rtl"] .hamburger {
-    margin-right: 0;
-    margin-left: 20px; /* Space from left edge for RTL */
+    margin-left: 0;
+    margin-right: 20px; /* Space from lang switch/logo for RTL */
 }
 
 .hamburger.active .bar:nth-child(1) {
@@ -206,9 +234,9 @@ html[dir="rtl"] .hamburger {
     transition: 0.4s;
 }
 
-/* Hero Banner */
+/* Hero Banner with Video Background */
 .hero-banner {
-    background: url('../img/hero-banner.jpg') no-repeat center center/cover;
+    background-color: #000; /* Fallback background for video */
     color: var(--white);
     text-align: center;
     padding: 150px 0;
@@ -216,7 +244,21 @@ html[dir="rtl"] .hamburger {
     display: flex; /* Use flex to center content vertically */
     align-items: center;
     justify-content: center;
-    min-height: 60vh; /* Ensure it takes at least 60% of viewport height */
+    min-height: 80vh; /* Make it taller to showcase video */
+    overflow: hidden; /* Hide overflow from video */
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Cover the entire area */
 }
 
 .hero-banner::before {
@@ -226,16 +268,17 @@ html[dir="rtl"] .hamburger {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Overlay for readability */
-    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker overlay for text readability */
+    z-index: 1;
 }
 
 .hero-banner .container {
     flex-direction: column;
     justify-content: center;
     position: relative; /* Bring content above overlay */
-    z-index: 1;
+    z-index: 2; /* Ensure content is above overlay */
     max-width: 800px; /* Constrain text width */
+    padding: 0 15px; /* Adjust padding for hero container */
 }
 
 .hero-banner h1 {
@@ -257,6 +300,10 @@ html[dir="rtl"] .hamburger {
     gap: 40px; /* Increased gap */
     margin-top: 50px;
     text-align: center;
+}
+
+.feature-item {
+    padding: 15px; /* Add some padding to items */
 }
 
 .feature-item i {
@@ -398,6 +445,11 @@ html[dir="rtl"] .faq-question i {
     align-items: flex-start; /* Align top */
 }
 
+html[dir="rtl"] .contact-grid {
+    /* For RTL, if two columns, usually info on right, form on left */
+    direction: rtl; /* This affects text within grid items */
+}
+
 .contact-info {
     text-align: left; /* Align contact info to left */
 }
@@ -410,7 +462,7 @@ html[dir="rtl"] .contact-info {
     font-size: 1.1em;
     margin-bottom: 12px; /* Adjusted spacing */
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Align icon and text to top if text wraps */
 }
 
 .contact-info i {
@@ -418,6 +470,7 @@ html[dir="rtl"] .contact-info {
     color: var(--primary-color);
     min-width: 20px; /* Ensure icon has consistent width */
     text-align: center;
+    flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 html[dir="rtl"] .contact-info i {
@@ -483,6 +536,7 @@ footer p {
     }
     .hero-banner {
         padding: 120px 0;
+        min-height: 70vh;
     }
     .hero-banner h1 {
         font-size: clamp(2.5em, 6vw, 4em);
@@ -505,9 +559,14 @@ footer p {
     }
 
     header .container {
-        flex-wrap: nowrap; /* Prevent logo/hamburger wrap on narrow screens */
+        flex-wrap: wrap; /* Allow logo/hamburger to wrap if needed */
         justify-content: space-between;
     }
+    header .logo { order: 1; }
+    .hamburger { order: 2; margin-left: auto; /* Push to right */ margin-right: 20px;}
+    .lang-switch { order: 3; width: 100%; text-align: center; margin-top: 10px; margin-left: 0; margin-right: 0;}
+    .lang-switch button { margin: 0 auto; display: block; } /* Center button */
+
 
     nav {
         position: fixed;
@@ -563,16 +622,6 @@ footer p {
         font-size: 1.2em;
     }
 
-    .hamburger {
-        display: flex;
-        position: relative; /* Keep it relative to header container */
-        order: 2; /* Put it after logo */
-    }
-
-    html[dir="rtl"] .hamburger {
-        order: -1; /* Put it before logo for RTL */
-    }
-
     .features-grid, .features-list, .contact-grid {
         grid-template-columns: 1fr;
     }
@@ -588,6 +637,10 @@ footer p {
     .contact-info, .contact-form {
         padding: 0 10px; /* Small padding on mobile */
     }
+    .contact-info { text-align: center; } /* Center contact info on mobile */
+    html[dir="rtl"] .contact-info { text-align: center; }
+    .contact-info p { justify-content: center; } /* Center items within contact info on mobile */
+    .contact-info i { margin-right: 8px; margin-left: 8px; } /* Adjust icon spacing */
 }
 
 @media (max-width: 480px) {
@@ -617,9 +670,4 @@ footer p {
     .faq-answer p {
         font-size: 0.95em;
     }
-}
-
-/* Ensure no horizontal scrollbar due to overflow */
-body {
-    overflow-x: hidden;
 }
