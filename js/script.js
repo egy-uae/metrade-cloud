@@ -1,159 +1,96 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
 
-            // Get target section and scroll smoothly
-            const targetId = this.getAttribute('href');
-            document.querySelector(targetId).scrollIntoView({
-                behavior: 'smooth'
-            });
-
-            // Close mobile menu if open
-            const nav = document.querySelector('nav');
-            const hamburger = document.querySelector('.hamburger');
-            if (nav.classList.contains('active')) {
-                nav.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-        });
-    });
-
-    // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('nav');
+    const langToggleButton = document.getElementById('lang-toggle-btn');
+    const htmlElement = document.documentElement;
 
+    // Mobile Menu Toggle
     hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active');
         hamburger.classList.toggle('active');
+        nav.classList.toggle('active');
+    });
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (nav.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
     });
 
     // FAQ Accordion
     const faqQuestions = document.querySelectorAll('.faq-question');
-
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
             const answer = question.nextElementSibling;
-            const icon = question.querySelector('i');
-
-            // Close other open FAQs
-            faqQuestions.forEach(otherQuestion => {
-                if (otherQuestion !== question && otherQuestion.classList.contains('active')) {
-                    otherQuestion.classList.remove('active');
-                    otherQuestion.nextElementSibling.style.maxHeight = null;
-                    otherQuestion.nextElementSibling.style.paddingBottom = '0';
-                    otherQuestion.querySelector('i').classList.remove('active');
-                }
+            const isActive = question.classList.contains('active');
+            
+            // Close all other questions
+            faqQuestions.forEach(q => {
+                q.classList.remove('active');
+                q.nextElementSibling.style.maxHeight = null;
+                q.nextElementSibling.style.padding = '0';
             });
 
-            // Toggle current FAQ
-            question.classList.toggle('active');
-            icon.classList.toggle('active'); // Rotate icon
-
-            if (answer.style.maxHeight) {
-                answer.style.maxHeight = null;
-                answer.style.paddingBottom = '0';
-            } else {
+            // Open the clicked question if it wasn't active
+            if (!isActive) {
+                question.classList.add('active');
                 answer.style.maxHeight = answer.scrollHeight + 'px';
-                answer.style.paddingBottom = '20px';
+                answer.style.padding = '0 25px 20px 25px'; // Adjust padding on open
             }
         });
     });
 
-    // Language Switcher Logic
-    const langToggleButton = document.getElementById('lang-toggle-btn');
-    const htmlElement = document.documentElement; // The <html> tag
-    const translatableElements = document.querySelectorAll('[data-en], [data-ar], [data-en-q], [data-ar-q], [data-en-a], [data-ar-a], [data-en-placeholder], [data-ar-placeholder], [data-en-alt], [data-ar-alt]');
+    // --- Language Switcher Logic ---
 
-    // Function to set the language
+    const translatableElements = document.querySelectorAll('[data-en], [data-ar], [data-en-alt], [data-ar-alt], [data-en-placeholder], [data-ar-placeholder], [data-en-q], [data-ar-q], [data-en-a], [data-ar-a]');
+
     function setLanguage(lang) {
-        if (lang === 'ar') {
-            htmlElement.setAttribute('lang', 'ar');
-            htmlElement.setAttribute('dir', 'rtl');
-            langToggleButton.textContent = 'English';
-            langToggleButton.setAttribute('data-lang', 'ar'); // Store current language
-        } else {
-            htmlElement.setAttribute('lang', 'en');
-            htmlElement.setAttribute('dir', 'ltr');
-            langToggleButton.textContent = 'العربية';
-            langToggleButton.setAttribute('data-lang', 'en'); // Store current language
-        }
+        // Set HTML attributes
+        htmlElement.setAttribute('lang', lang);
+        htmlElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
 
-        // Update all translatable elements
-        translatableElements.forEach(element => {
-            const currentLang = htmlElement.getAttribute('lang');
-            const enText = element.getAttribute(`data-en`);
-            const arText = element.getAttribute(`data-ar`);
-            const enQ = element.getAttribute(`data-en-q`);
-            const arQ = element.getAttribute(`data-ar-q`);
-            const enA = element.getAttribute(`data-en-a`);
-            const arA = element.getAttribute(`data-ar-a`);
-            const enPlaceholder = element.getAttribute(`data-en-placeholder`);
-            const arPlaceholder = element.getAttribute(`data-ar-placeholder`);
-            const enAlt = element.getAttribute(`data-en-alt`);
-            const arAlt = element.getAttribute(`data-ar-alt`);
+        // Update button text and data attribute
+        langToggleButton.textContent = lang === 'ar' ? 'English' : 'العربية';
+        langToggleButton.setAttribute('data-lang', lang);
 
+        // Update all elements with data attributes
+        translatableElements.forEach(el => {
+            const text = el.getAttribute(`data-${lang}`);
+            const altText = el.getAttribute(`data-${lang}-alt`);
+            const placeholderText = el.getAttribute(`data-${lang}-placeholder`);
+            const questionText = el.getAttribute(`data-${lang}-q`);
+            const answerText = el.getAttribute(`data-${lang}-a`);
 
-            if (enText && arText && element.tagName !== 'INPUT' && element.tagName !== 'TEXTAREA') { // Exclude input/textarea for direct textContent update
-                element.textContent = (currentLang === 'en') ? enText : arText;
+            if (text) el.textContent = text;
+            if (altText) el.setAttribute('alt', altText);
+            if (placeholderText) el.setAttribute('placeholder', placeholderText);
+            if (questionText) {
+                const icon = el.querySelector('i');
+                el.innerHTML = questionText + (icon ? icon.outerHTML : '');
             }
-            if (element.tagName === 'TITLE') { // Special handling for title tag
-                element.textContent = (currentLang === 'en') ? element.getAttribute('data-en') : element.getAttribute('data-ar');
-            }
-            if (enQ && arQ) {
-                // For FAQ questions, ensure the icon is preserved
-                const icon = element.querySelector('i');
-                element.innerHTML = ((currentLang === 'en') ? enQ : arQ) + (icon ? icon.outerHTML : '');
-            }
-            if (enA && arA) {
-                // For FAQ answers, replace content within the <p> tag
-                const pTag = element.querySelector('p');
-                if (pTag) {
-                    pTag.textContent = (currentLang === 'en') ? enA : arA;
-                }
-            }
-            if (enPlaceholder && arPlaceholder) {
-                element.setAttribute('placeholder', (currentLang === 'en') ? enPlaceholder : arPlaceholder);
-            }
-            if (enAlt && arAlt) {
-                element.setAttribute('alt', (currentLang === 'en') ? enAlt : arAlt);
+            if (answerText) {
+                const pTag = el.querySelector('p');
+                if (pTag) pTag.textContent = answerText;
             }
         });
-
-        // Update page title specifically
-        const pageTitle = document.querySelector('title');
-        pageTitle.textContent = (lang === 'en') ? pageTitle.getAttribute('data-en') : pageTitle.getAttribute('data-ar');
-
-        // Store language preference in localStorage
-        localStorage.setItem('langPreference', lang);
+        
+        // Save preference to localStorage
+        localStorage.setItem('userLang', lang);
     }
 
-    // Load language preference from localStorage or default to English
-    const savedLang = localStorage.getItem('langPreference') || 'en';
-    setLanguage(savedLang); // Set language on load
-
-    // Add event listener for the language toggle button
+    // Language toggle button event
     langToggleButton.addEventListener('click', () => {
         const currentLang = langToggleButton.getAttribute('data-lang');
-        const newLang = (currentLang === 'en') ? 'ar' : 'en';
+        const newLang = currentLang === 'en' ? 'ar' : 'en';
         setLanguage(newLang);
     });
 
-    // Handle form submission (placeholder)
-    const contactForm = document.querySelector('.contact-form form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Get current language for alert message
-            const currentLang = htmlElement.getAttribute('lang');
-            if (currentLang === 'ar') {
-                alert('تم إرسال النموذج بنجاح! (هذا مجرد مثال. تحتاج إلى واجهة خلفية لمعالجة بيانات النموذج.)');
-            } else {
-                alert('Form submitted successfully! (This is a placeholder. You need a backend to process form submissions.)');
-            }
-            // Here you would typically send form data to a server using fetch() or XMLHttpRequest
-            contactForm.reset();
-        });
-    }
+    // On page load, check for saved language or default to 'en'
+    const savedLang = localStorage.getItem('userLang') || 'en';
+    setLanguage(savedLang);
+
 });
