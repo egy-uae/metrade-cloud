@@ -95,8 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const arAlt = element.getAttribute(`data-ar-alt`);
 
 
-            if (enText && arText) {
+            if (enText && arText && element.tagName !== 'INPUT' && element.tagName !== 'TEXTAREA') { // Exclude input/textarea for direct textContent update
                 element.textContent = (currentLang === 'en') ? enText : arText;
+            }
+            if (element.tagName === 'TITLE') { // Special handling for title tag
+                element.textContent = (currentLang === 'en') ? element.getAttribute('data-en') : element.getAttribute('data-ar');
             }
             if (enQ && arQ) {
                 // For FAQ questions, ensure the icon is preserved
@@ -118,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Update page title
+        // Update page title specifically
         const pageTitle = document.querySelector('title');
         pageTitle.textContent = (lang === 'en') ? pageTitle.getAttribute('data-en') : pageTitle.getAttribute('data-ar');
 
