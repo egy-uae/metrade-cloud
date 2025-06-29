@@ -1,0 +1,512 @@
+/* General Styles */
+:root {
+    --primary-color: #D71920; /* الأحمر */
+    --dark-grey: #2C2C2C; /* الرمادي الغامق */
+    --white: #FFFFFF; /* الأبيض */
+    --light-grey: #F8F8F8; /* رمادي فاتح للخلفيات */
+}
+
+body {
+    font-family: 'Poppins', 'Cairo', sans-serif; /* Poppins for LTR, Cairo for RTL */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: var(--dark-grey);
+    background-color: var(--white);
+    direction: ltr; /* Default for LTR */
+}
+
+/* RTL Support for Arabic */
+html[lang="ar"] body {
+    font-family: 'Cairo', 'Poppins', sans-serif;
+    direction: rtl;
+}
+
+html[lang="ar"] .container {
+    padding-left: 15px; /* Adjust padding for RTL */
+    padding-right: 15px;
+}
+
+html[lang="ar"] .nav-links {
+    padding-right: 0; /* Reset default padding */
+}
+
+html[lang="ar"] .nav-links li {
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+html[lang="ar"] .lang-switch {
+    margin-left: 0;
+    margin-right: auto; /* Push to left */
+}
+
+html[lang="ar"] .hamburger {
+    right: auto;
+    left: 20px;
+}
+
+/* Flexbox for RTL adjustments */
+html[lang="ar"] header .container,
+html[lang="ar"] nav ul,
+html[lang="ar"] .features-grid,
+html[lang="ar"] .features-list,
+html[lang="ar"] .contact-grid {
+    flex-direction: row-reverse;
+}
+
+html[lang="ar"] .feature-item,
+html[lang="ar"] .feature-card {
+    text-align: right;
+}
+
+html[lang="ar"] .contact-form input,
+html[lang="ar"] .contact-form textarea {
+    text-align: right;
+    padding-right: 15px;
+    padding-left: 10px;
+}
+
+/* Utility Classes */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--light-grey);
+}
+
+.bg-dark {
+    background-color: var(--dark-grey);
+    color: var(--white);
+}
+
+.bg-dark a {
+    color: var(--primary-color);
+}
+
+.text-center {
+    text-align: center;
+}
+
+h1, h2, h3 {
+    color: var(--dark-grey);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.bg-dark h1, .bg-dark h2, .bg-dark h3 {
+    color: var(--white);
+}
+
+h1 { font-size: 3em; }
+h2 { font-size: 2.5em; }
+h3 { font-size: 1.8em; }
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: darken(var(--primary-color), 10%); /* Placeholder for CSS preprocessor or manual adjustment */
+    opacity: 0.8;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: darken(var(--primary-color), 10%);
+    opacity: 0.9;
+}
+
+.btn-whatsapp {
+    background-color: #25D366; /* WhatsApp Green */
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: var(--white);
+    font-weight: 600;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    background-color: darken(#25D366, 10%);
+}
+
+/* Header */
+header {
+    background-color: var(--white);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo img {
+    height: 50px; /* Adjust logo height as needed */
+}
+
+nav .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav .nav-links li {
+    margin: 0 20px;
+}
+
+nav .nav-links a {
+    color: var(--dark-grey);
+    font-weight: 600;
+}
+
+nav .lang-switch a {
+    margin-left: 20px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.hamburger {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute; /* Position relative to header, not container */
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001; /* Above nav */
+}
+
+.hamburger .bar {
+    height: 3px;
+    width: 25px;
+    background-color: var(--dark-grey);
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* Hero Banner */
+.hero-banner {
+    background: url('../img/hero-banner.jpg') no-repeat center center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 150px 0;
+    position: relative;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+}
+
+.hero-banner .container {
+    flex-direction: column;
+    justify-content: center;
+    position: relative; /* Bring content above overlay */
+    z-index: 1;
+}
+
+.hero-banner h1 {
+    font-size: 4.5em;
+    margin-bottom: 10px;
+    color: var(--white);
+}
+
+.hero-banner .tagline {
+    font-size: 1.8em;
+    margin-bottom: 40px;
+    color: var(--white);
+}
+
+/* Intro Section - Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.feature-item i {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.feature-item h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.dashboard-preview {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.dashboard-preview img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Platform Features List */
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.feature-card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* FAQ Section */
+.faq-item {
+    background-color: var(--white);
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--dark-grey);
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #f2f2f2;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    background-color: var(--light-grey);
+    color: #555;
+}
+
+.faq-answer p {
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+/* Contact Section */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    margin-top: 50px;
+    color: var(--white);
+}
+
+.contact-info p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.contact-info i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+html[lang="ar"] .contact-info i {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.1);
+    color: var(--white);
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.contact-form button.btn-primary {
+    width: 100%;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-grey);
+    color: var(--white);
+    text-align: center;
+    padding: 25px 0;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 { font-size: 3em; }
+    h2 { font-size: 2em; }
+    h3 { font-size: 1.5em; }
+    .hero-banner { padding: 100px 0; }
+    .hero-banner .tagline { font-size: 1.4em; }
+
+    header .container {
+        flex-wrap: wrap; /* Allow wrapping for logo and hamburger */
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Hidden by default */
+        width: 100%;
+        height: 100%;
+        background-color: var(--dark-grey);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: left 0.5s ease;
+        z-index: 999;
+    }
+
+    nav.active {
+        left: 0; /* Show menu */
+    }
+
+    nav .nav-links {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+    nav .nav-links li {
+        margin: 20px 0;
+    }
+
+    nav .nav-links a {
+        color: var(--white);
+        font-size: 1.5em;
+    }
+
+    nav .lang-switch {
+        margin-top: 30px;
+    }
+    nav .lang-switch a {
+        font-size: 1.2em;
+        color: var(--primary-color);
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    html[lang="ar"] .hamburger {
+        left: 20px;
+        right: auto;
+    }
+
+    .features-grid, .features-list, .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-item, .feature-card {
+        padding: 20px;
+    }
+
+    .section-padding {
+        padding: 50px 0;
+    }
+
+    .contact-info, .contact-form {
+        padding: 0 15px; /* Add some padding on mobile */
+    }
+}
+
+/* Darken color utility for hover - requires CSS preprocessor or manual adjustment */
+/* Example: background-color: #C0151B; for var(--primary-color) hover */
+/* You would need a build step (like Sass) to use `darken()`. For pure CSS, just use a slightly darker hex code. */
