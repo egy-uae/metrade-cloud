@@ -47,7 +47,7 @@
         .animated-item.is-visible { opacity: 1; transform: translateY(0); }
 
         /* =================================================================
-           2. AUTH & SETTINGS MODALS
+           2. MODALS (AUTH & SETTINGS)
            ================================================================= */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease; }
         .modal-overlay.visible { opacity: 1; visibility: visible; }
@@ -56,7 +56,6 @@
         .modal-content .close-btn { position: absolute; top: 15px; left: 15px; background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--muted-text-color); }
         .modal-content h3 { text-align: center; font-size: 1.8rem; margin-bottom: 10px; }
         .modal-content p { text-align: center; margin-bottom: 25px; }
-        
         .auth-modal { max-width: 420px; }
         .form-group { margin-bottom: 20px; }
         .form-input { width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background-color: var(--background-color); color: var(--text-color); font-family: inherit; font-size: 1rem; transition: border-color 0.2s, box-shadow 0.2s; }
@@ -68,7 +67,6 @@
         .form-footer-text .switcher-link { font-weight: 700; color: var(--primary-color); cursor: pointer; }
         .form-options { display: flex; justify-content: flex-start; font-size: 0.85rem; margin-top: -10px; margin-bottom: 20px; }
         .hidden { display: none; }
-
         .settings-modal { max-width: 500px; }
         .theme-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px; }
         .theme-option { border: 2px solid var(--border-color); border-radius: var(--radius-md); padding: 15px; text-align: center; cursor: pointer; position: relative; transition: all 0.2s ease; }
@@ -109,7 +107,7 @@
         .mobile-nav-auth a { display: block; text-align: center; margin-bottom: 15px; }
 
         /* =================================================================
-           4. ALL OTHER SECTIONS & FOOTER
+           4. VISUALLY ENHANCED SECTIONS
            ================================================================= */
         .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; min-height: 80vh; }
         .kicker { display: inline-block; background: var(--accent-color); color: var(--primary-color); padding: 8px 16px; border-radius: 999px; font-weight: 700; margin-bottom: 20px; }
@@ -117,12 +115,16 @@
         h1 span { color: var(--primary-color); }
         p.lead { font-size: 1.1rem; max-width: 85%; margin-bottom: 30px; }
         .hero-ctas { margin-top: 26px; display: flex; gap: 14px; align-items: center; }
-        .hero-video { border-radius:var(--radius-lg); box-shadow: 0 15px 40px var(--shadow-color-heavy); overflow: hidden; }
+        .hero-video { position: relative; height: 100%; min-height: 300px; width: 100%; border-radius: var(--radius-lg); box-shadow: 0 15px 40px var(--shadow-color-heavy); overflow: hidden; background-color: #000; }
+        .hero-video video { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; width: auto; height: auto; object-fit: cover; }
+        
+        #services { background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .service-card { background: var(--surface-color); padding: 30px 25px; border-radius: var(--radius-lg); box-shadow: 0 8px 26px var(--shadow-color-light); border: 1px solid var(--border-color); text-align: center; transition: all 0.3s; }
         .service-card:hover { transform: translateY(-12px); box-shadow: 0 20px 45px var(--shadow-color-heavy); }
         .service-card .icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; line-height: 1; }
         .service-card h3 { font-size: 1.25rem; }
+        
         .features-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center; }
         .feature-item { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 25px; }
         .feature-item .icon { font-size: 1.5rem; color: var(--primary-color); background-color: var(--accent-color); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -131,12 +133,28 @@
         .feature-image:hover { box-shadow: 0 25px 50px var(--shadow-color-heavy); }
         .feature-image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-speed) ease; }
         .feature-image:hover img { transform: scale(1.05); }
+        
         .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
         .step { text-align: center; padding: 20px; }
         .step-number { font-size: 1.5rem; font-weight: 800; color: var(--primary-color); background-color: var(--accent-color); border: 2px solid var(--border-color); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
-        .stats-section { background: var(--accent-color); }
+        
+        .stats-section { position: relative; overflow: hidden; }
+        .stats-video-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: 0; object-fit: cover; }
+        .stats-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(13, 71, 161, 0.8); z-index: 1; }
+        [data-theme="dark"] .stats-section::before { background-color: rgba(15, 23, 42, 0.8); }
+        .stats-section .container { position: relative; z-index: 2; }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
-        .stat-item .stat-number { font-size: 3rem; font-weight: 800; color: var(--primary-color); }
+        .stat-item .stat-number, .stat-item .stat-label { color: #fff; }
+        .stat-item .stat-number { font-size: 3rem; font-weight: 800; }
+        
+        .testimonials-container { position: relative; }
+        .test-wrap { overflow: hidden; border-radius:var(--radius-lg); }
+        .test-cards { display: flex; transition:transform .45s ease-in-out; gap: 20px; }
+        .test { min-width: 100%; flex-shrink: 0; background: var(--surface-color); padding: 35px; border-radius: var(--radius-lg); box-shadow: 0 10px 28px var(--shadow-color-light); border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; }
+        .test-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid var(--accent-color-dark); }
+        .test p { font-style: italic; color: var(--text-color); font-size: 1.1rem; text-align: center; }
+        .test h4 { margin-top: 15px; color: var(--primary-color); font-weight: 700; text-align: center; }
+        
         .cta-section { background: var(--primary-color); border-radius: var(--radius-lg); padding: 60px 40px; text-align: center; color: #fff; }
         .cta-section h2, .cta-section p { color: #fff; }
         .cta-section p { max-width: 600px; margin: 0 auto 30px; opacity: 0.9; }
@@ -146,13 +164,7 @@
         .partner { min-width: 140px; flex: 0 0 140px; height: 80px; background: var(--surface-color); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; padding: 8px; box-shadow: 0 6px 18px var(--shadow-color-light); border: 1px solid var(--border-color); filter: grayscale(100%); opacity: 0.7; transition: all .2s; }
         .partner:hover { filter: none; transform: translateY(-6px); opacity: 1; }
         .partner img { max-height: 50px; width: auto; object-fit: contain; }
-        .testimonials-container { position: relative; }
-        .test-wrap { overflow: hidden; border-radius:var(--radius-lg); }
-        .test-cards { display: flex; transition:transform .45s ease-in-out; gap: 20px; }
-        .test { min-width: 100%; flex-shrink: 0; background: var(--surface-color); padding: 35px; border-radius: var(--radius-lg); box-shadow: 0 10px 28px var(--shadow-color-light); border: 1px solid var(--border-color); }
-        .test p { font-style: italic; color: var(--text-color); font-size: 1.1rem; }
-        .test h4 { margin-top: 15px; color: var(--primary-color); font-weight: 700; }
-        .test-controls { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+        .test-controls { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
         .icon-btn { background: var(--surface-color); border: 1px solid var(--border-color); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; color: var(--primary-color); transition: all 0.2s ease; }
         .icon-btn:hover { background: var(--accent-color); border-color: var(--primary-color); }
         .site-footer { padding: 70px 0 30px 0; background-color: var(--surface-color); border-top: 1px solid var(--border-color); }
@@ -174,7 +186,7 @@
         .settings-fab { left: 20px; }
 
         /* =================================================================
-           5. RESPONSIVE DESIGN
+           6. RESPONSIVE DESIGN
            ================================================================= */
         @media(max-width:1024px){
             .nav-center, .nav-right a { display: none; }
@@ -246,8 +258,21 @@
 
     <main>
         <section id="home" class="container hero" aria-labelledby="hero-heading">
-            <div class="hero-left"><span class="kicker animated-item" style="--delay: 0.1s;">بوابتك للتجارة العالمية</span><h1 id="hero-heading" class="animated-item" style="--delay: 0.2s;">منصة متكاملة تربط <span>مصر والإمارات</span> بالعالم</h1><p class="lead animated-item" style="--delay: 0.3s;">نوفر حلولاً شاملة للاستيراد والتصدير، وندير سلاسل الإمداد من الباب إلى الباب بكفاءة وموثوقية.</p><div class="hero-ctas animated-item" style="--delay: 0.4s;"><a href="#services" class="btn btn-primary">اكتشف خدماتنا</a><a href="#contact" class="btn btn-ghost">اطلب عرض سعر</a></div></div>
-            <div class="hero-video animated-item" style="--delay: 0.5s;"><video autoplay muted loop playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><source src="https://assets.mixkit.co/videos/preview/mixkit-unloading-a-container-in-a-warehouse-42014-large.mp4" type="video/mp4">متصفحك لا يدعم وسم الفيديو.</video></div>
+            <div class="hero-left">
+                <span class="kicker animated-item" style="--delay: 0.1s;">بوابتك للتجارة العالمية</span>
+                <h1 id="hero-heading" class="animated-item" style="--delay: 0.2s;">منصة متكاملة تربط <span>مصر والإمارات</span> بالعالم</h1>
+                <p class="lead animated-item" style="--delay: 0.3s;">نوفر حلولاً شاملة للاستيراد والتصدير، وندير سلاسل الإمداد من الباب إلى الباب بكفاءة وموثوقية.</p>
+                <div class="hero-ctas animated-item" style="--delay: 0.4s;">
+                    <a href="#services" class="btn btn-primary">اكتشف خدماتنا</a>
+                    <a href="#contact" class="btn btn-ghost">اطلب عرض سعر</a>
+                </div>
+            </div>
+            <div class="hero-video animated-item" style="--delay: 0.5s;">
+                <video autoplay muted loop playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                    <source src="https://cdn.pixabay.com/video/2024/05/18/212404_tiny.mp4" type="video/mp4">
+                    متصفحك لا يدعم وسم الفيديو.
+                </video>
+            </div>
         </section>
 
         <section id="services" class="container" aria-labelledby="services-heading">
@@ -265,6 +290,9 @@
         </section>
         
         <section id="stats" class="stats-section" aria-label="إحصائيات الشركة">
+            <video autoplay loop muted playsinline class="stats-video-bg">
+                <source src="https://cdn.pixabay.com/video/2025/05/01/276047_tiny.mp4" type="video/mp4">
+            </video>
             <div class="container"><div class="stats-grid"><div class="stat-item animated-item" style="--delay: 0.1s;"><span class="stat-number" data-target="15">+15</span><span class="stat-label">عاماً من الخبرة</span></div><div class="stat-item animated-item" style="--delay: 0.2s;"><span class="stat-number" data-target="5000">+5,000</span><span class="stat-label">شحنة مكتملة</span></div><div class="stat-item animated-item" style="--delay: 0.3s;"><span class="stat-number" data-target="40">+40</span><span class="stat-label">دولة حول العالم</span></div><div class="stat-item animated-item" style="--delay: 0.4s;"><span class="stat-number" data-target="99">99%</span><span class="stat-label">رضا العملاء</span></div></div></div>
         </section>
 
@@ -275,7 +303,7 @@
 
         <section id="testimonials" class="container" aria-labelledby="testi-heading">
             <h2 id="testi-heading" class="animated-item" style="--delay: 0s;">ماذا يقول عملاؤنا</h2><p class="section-subtitle animated-item" style="--delay: 0.1s;">شهادات نعتز بها من عملائنا الذين وضعوا ثقتهم فينا لتحقيق أهدافهم التجارية.</p>
-            <div class="testimonials-container animated-item" style="--delay: 0.2s;"><div class="test-wrap"><div class="test-cards" id="test-cards"><div class="test"><p>"احترافية وفعالية وموثوقية عالية — ساعدتنا المصرية الإماراتية على التوسع في أسواق الخليج دون أي عوائق. كانوا أكثر من مجرد مزود خدمة، بل شركاء حقيقيون."</p><h4>- أحمد منصور، مدير التصدير، شركة النيل للصناعات الغذائية</h4></div><div class="test"><p>"تواصل واضح وخدمات لوجستية دقيقة. وصلت بضائعنا في الموعد المحدد وفي حالة ممتازة. أوصي بهم بشدة لأي شخص يبحث عن شريك لوجستي موثوق."</p><h4>- فاطمة علي، مالكة، متجر الأناقة للمنسوجات</h4></div><div class="test"><p>"تمثيل تجاري ممتاز — كانت العلاقات المحلية التي بنوها هي ما أحدث الفرق في توزيع منتجاتنا في الإمارات. فهمهم للسوق لا يقدر بثمن."</p><h4>- شركة الخليج للتكنولوجيا</h4></div></div></div><div class="test-controls"><button class="icon-btn" id="test-prev" aria-label="رأي سابق"><i class="fas fa-chevron-right"></i></button><button class="icon-btn" id="test-next" aria-label="الرأي التالي"><i class="fas fa-chevron-left"></i></button></div></div>
+            <div class="testimonials-container animated-item" style="--delay: 0.2s;"><div class="test-wrap"><div class="test-cards" id="test-cards"><div class="test"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar" class="test-avatar"><p>"احترافية وفعالية وموثوقية عالية — ساعدتنا المصرية الإماراتية على التوسع في أسواق الخليج دون أي عوائق. كانوا أكثر من مجرد مزود خدمة، بل شركاء حقيقيون."</p><h4>- أحمد منصور، مدير التصدير</h4></div><div class="test"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Avatar" class="test-avatar"><p>"تواصل واضح وخدمات لوجستية دقيقة. وصلت بضائعنا في الموعد المحدد وفي حالة ممتازة. أوصي بهم بشدة لأي شخص يبحث عن شريك لوجستي موثوق."</p><h4>- فاطمة علي، مالكة متجر</h4></div><div class="test"><img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Avatar" class="test-avatar"><p>"تمثيل تجاري ممتاز — كانت العلاقات المحلية التي بنوها هي ما أحدث الفرق في توزيع منتجاتنا في الإمارات. فهمهم للسوق لا يقدر بثمن."</p><h4>- شركة الخليج للتكنولوجيا</h4></div></div></div><div class="test-controls"><button class="icon-btn" id="test-prev" aria-label="رأي سابق"><i class="fas fa-chevron-right"></i></button><button class="icon-btn" id="test-next" aria-label="الرأي التالي"><i class="fas fa-chevron-left"></i></button></div></div>
         </section>
 
         <section id="contact" class="container" aria-labelledby="cta-heading">
@@ -451,7 +479,7 @@
         if(statsSection){
             new IntersectionObserver(entries => {
                 if(entries[0].isIntersecting){ 
-                    startCounters(); 
+                    startCounters();
                 }
             }, {threshold: 0.5}).observe(statsSection);
         }
